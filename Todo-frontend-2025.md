@@ -1058,9 +1058,8 @@ npm run dev
 - ✅ UI สวยงาม มี animations
 
 ## บันทึกรูปผลการทดลอง
-```bash
-# บันทึกรูปผลการทดลองที่นี่
-``` 
+<img width="1915" height="863" alt="image" src="https://github.com/user-attachments/assets/e5fd2c8d-03eb-4553-8368-06cafcc37e59" />
+
 
 ### ขั้นตอนที่ 8.4: Test Build
 
@@ -1172,9 +1171,8 @@ git push origin main
 
 
 ## บันทึกรูปผลการ Deploy
-```bash
-# บันทึกรูปผลการ Deploy ที่นี่
-```
+<img width="1917" height="863" alt="image" src="https://github.com/user-attachments/assets/cdb0230b-a770-4799-8baf-4fc124d4d6ac" />
+
 
 ### ขั้นตอนที่ 10.3: หา URL ของ Website
 
@@ -1203,9 +1201,11 @@ https://your-username.github.io/todo-frontend/
 
 ---
 ## บันทึกรูปผลการรันหน้า Front-end
-```bash
-# บันทึกรูปผลการรันหน้า Front-end ที่นี่
-```
+<img width="1919" height="872" alt="image" src="https://github.com/user-attachments/assets/2e7fc59c-fd8d-43dd-9553-715cb1f6b6ee" />
+
+<img width="1917" height="867" alt="image" src="https://github.com/user-attachments/assets/5ecba9fb-d2dd-4e03-82c3-395850a33ff7" />
+
+
 
 ## ส่วนที่ 11: Troubleshooting
 
@@ -1358,41 +1358,41 @@ todo-frontend/
 
 ### Pre-deployment Checklist
 
-- [ ] Node.js 18+ ติดตั้งแล้ว
-- [ ] Git ติดตั้งแล้ว
-- [ ] GitHub Account พร้อม
-- [ ] Backend API ทำงานปกติ
-- [ ] CORS ตั้งค่าถูกต้อง
+- [x] Node.js 18+ ติดตั้งแล้ว
+- [x] Git ติดตั้งแล้ว
+- [x] GitHub Account พร้อม
+- [x] Backend API ทำงานปกติ
+- [x] CORS ตั้งค่าถูกต้อง
 
 ### Development Checklist
 
-- [ ] สร้างโปรเจกต์ Next.js
-- [ ] ติดตั้ง dependencies ครบ
-- [ ] สร้าง API layer (`src/lib/api.js`)
-- [ ] สร้าง components ทั้ง 3 ตัว
-- [ ] สร้าง main page
-- [ ] แก้ไข styling
-- [ ] ทดสอบ local ผ่าน
+- [x] สร้างโปรเจกต์ Next.js
+- [x] ติดตั้ง dependencies ครบ
+- [x] สร้าง API layer (`src/lib/api.js`)
+- [x] สร้าง components ทั้ง 3 ตัว
+- [x] สร้าง main page
+- [x] แก้ไข styling
+- [x] ทดสอบ local ผ่าน
 
 ### Deployment Checklist
 
-- [ ] สร้าง GitHub repository
-- [ ] สร้าง workflow file
-- [ ] ตั้งค่า GitHub Pages
-- [ ] ตั้งค่า workflow permissions
-- [ ] อัพเดท API URL ใน workflow
-- [ ] Push code ไป GitHub
-- [ ] Workflow รันสำเร็จ
-- [ ] Website เข้าถึงได้
-- [ ] ทดสอบ features ครบ
+- [x] สร้าง GitHub repository
+- [x] สร้าง workflow file
+- [x] ตั้งค่า GitHub Pages
+- [x] ตั้งค่า workflow permissions
+- [x] อัพเดท API URL ใน workflow
+- [x] Push code ไป GitHub
+- [x] Workflow รันสำเร็จ
+- [x] Website เข้าถึงได้
+- [x] ทดสอบ features ครบ
 
 ### Testing Checklist
 
-- [ ] เปิดหน้าเว็บได้
-- [ ] API Status เป็น "Connected"
-- [ ] เพิ่ม Todo ได้
-- [ ] ลบ Todo ได้
-- [ ] Statistics แสดงถูกต้อง
+- [x] เปิดหน้าเว็บได้
+- [x] API Status เป็น "Connected"
+- [x] เพิ่ม Todo ได้
+- [x] ลบ Todo ได้
+- [x] Statistics แสดงถูกต้อง
 
 
 ---
@@ -1400,8 +1400,62 @@ todo-frontend/
 ## ส่วนที่ 15: คำถามท้ายการทดลอง
 
 1. **CI/CD Pipeline**: อธิบายขั้นตอนใน GitHub Actions workflow
-2. **CORS**: ทำไม Backend ต้อง enable CORS สำหรับ Frontend
+- CI/CD (Continuous Integration / Continuous Deployment) ในโปรเจกต์นี้ถูกตั้งค่าไว้ในไฟล์ .github/workflows/deploy.yml ซึ่งใช้ระบบ GitHub Actions ทำงานอัตโนมัติเมื่อมีการ push code ไปยัง branch main
+- ขั้นตอนหลักของ Pipeline
 
+| ขั้นตอน                          | รายละเอียด                                                                                                                                             |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **1. Trigger Workflow**          | Workflow จะเริ่มทำงานอัตโนมัติเมื่อมีการ push หรือ pull request มายัง branch `main` หรือเมื่อผู้ใช้กด “Run workflow” ด้วยตนเอง (workflow_dispatch)     |
+| **2. Checkout Code**             | ใช้ action `actions/checkout@v4` เพื่อดึง source code ของโปรเจกต์จาก GitHub ลงมาบนเครื่อง virtual ที่ GitHub เตรียมให้                                 |
+| **3. Setup Node.js Environment** | ใช้ action `actions/setup-node@v4` เพื่อติดตั้ง Node.js เวอร์ชัน 18 สำหรับรัน Next.js                                                                  |
+| **4. Install Dependencies**      | รันคำสั่ง `npm ci` เพื่อติดตั้ง dependencies ที่ระบุไว้ใน `package-lock.json`                                                                          |
+| **5. Run Linting**               | ตรวจสอบคุณภาพของโค้ดด้วย `npm run lint` เพื่อให้แน่ใจว่าไม่มี error ด้าน syntax หรือ style ก่อน build                                                  |
+| **6. Build Next.js App**         | ใช้คำสั่ง `npm run build` เพื่อสร้าง static files ไปไว้ในโฟลเดอร์ `out/` พร้อมกำหนดตัวแปรแวดล้อม `NEXT_PUBLIC_API_URL` เพื่อเชื่อมต่อกับ Backend Flask |
+| **7. Upload Artifact**           | ใช้ `actions/upload-pages-artifact@v3` เพื่อเก็บไฟล์ที่ build แล้วเตรียมสำหรับการ deploy                                                               |
+| **8. Deploy to GitHub Pages**    | ใช้ `actions/deploy-pages@v4` เพื่อเผยแพร่เว็บไซต์ขึ้น GitHub Pages โดยอัตโนมัติ                                                                       |
+| **9. Verify Deployment**         | GitHub Actions จะแสดง URL ของเว็บ (เช่น `https://username.github.io/todo-frontend/`) เมื่อ deploy สำเร็จ                                              |
+
+- **สรุป** : เมื่อ push → GitHub Actions จะ Build → Upload → Deploy ให้โดยอัตโนมัติ โดยไม่ต้องอัปโหลดไฟล์ด้วยตนเอง- CI/CD (Continuous Integration / Continuous Deployment) ในโปรเจกต์นี้ถูกตั้งค่าไว้ในไฟล์ .github/workflows/deploy.yml ซึ่งใช้ระบบ GitHub Actions ทำงานอัตโนมัติเมื่อมีการ push code ไปยัง branch main
+- ขั้นตอนหลักของ Pipeline
+
+| ขั้นตอน                          | รายละเอียด                                                                                                                                             |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **1. Trigger Workflow**          | Workflow จะเริ่มทำงานอัตโนมัติเมื่อมีการ push หรือ pull request มายัง branch `main` หรือเมื่อผู้ใช้กด “Run workflow” ด้วยตนเอง (workflow_dispatch)     |
+| **2. Checkout Code**             | ใช้ action `actions/checkout@v4` เพื่อดึง source code ของโปรเจกต์จาก GitHub ลงมาบนเครื่อง virtual ที่ GitHub เตรียมให้                                 |
+| **3. Setup Node.js Environment** | ใช้ action `actions/setup-node@v4` เพื่อติดตั้ง Node.js เวอร์ชัน 18 สำหรับรัน Next.js                                                                  |
+| **4. Install Dependencies**      | รันคำสั่ง `npm ci` เพื่อติดตั้ง dependencies ที่ระบุไว้ใน `package-lock.json`                                                                          |
+| **5. Run Linting**               | ตรวจสอบคุณภาพของโค้ดด้วย `npm run lint` เพื่อให้แน่ใจว่าไม่มี error ด้าน syntax หรือ style ก่อน build                                                  |
+| **6. Build Next.js App**         | ใช้คำสั่ง `npm run build` เพื่อสร้าง static files ไปไว้ในโฟลเดอร์ `out/` พร้อมกำหนดตัวแปรแวดล้อม `NEXT_PUBLIC_API_URL` เพื่อเชื่อมต่อกับ Backend Flask |
+| **7. Upload Artifact**           | ใช้ `actions/upload-pages-artifact@v3` เพื่อเก็บไฟล์ที่ build แล้วเตรียมสำหรับการ deploy                                                               |
+| **8. Deploy to GitHub Pages**    | ใช้ `actions/deploy-pages@v4` เพื่อเผยแพร่เว็บไซต์ขึ้น GitHub Pages โดยอัตโนมัติ                                                                       |
+| **9. Verify Deployment**         | GitHub Actions จะแสดง URL ของเว็บ (เช่น `https://username.github.io/todo-frontend/`) เมื่อ deploy สำเร็จ                                              |
+
+- **สรุป** : เมื่อ push → GitHub Actions จะ Build → Upload → Deploy ให้โดยอัตโนมัติ โดยไม่ต้องอัปโหลดไฟล์ด้วยตนเอง
+
+2. **CORS**: ทำไม Backend ต้อง enable CORS สำหรับ Frontend
+- CORS (Cross-Origin Resource Sharing) เป็น กลไกความปลอดภัยของเว็บเบราว์เซอร์ ที่ป้องกันไม่ให้เว็บไซต์หนึ่ง (เช่น https://username.github.io) ส่งคำขอไปยังโดเมนอื่น (เช่น https://flask-todo-cicd.onrender.com) โดยไม่ได้รับอนุญาต
+- เบราว์เซอร์จะบล็อกคำขอ API ข้ามโดเมน (cross-origin request) ถ้า Backend ไม่อนุญาตอย่างชัดเจน
+- Backend ต้อง Enable CORS ในการทดลองนี้:
+  - Frontend ถูก deploy บน GitHub Pages (โดเมน https://username.github.io)
+  - Backend ถูก deploy บน Render (โดเมน https://flask-todo-cicd.onrender.com)
+  - ทั้งสองอยู่คนละโดเมน → ถือเป็น Cross-Origin Request ดังนั้น Backend Flask ต้องเปิดใช้งาน CORS เช่นใน ``app/__init__.py:``
+    ``` python
+    CORS(app, resources={
+        r"/api/*": {
+            "origins": [
+                "http://localhost:3000",
+                "https://*.github.io",
+                "https://your-username.github.io"
+            ],
+            "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+            "allow_headers": ["Content-Type"]
+        }
+    })
+    ```
+- **ประโยชน์**
+1. อนุญาตให้ Frontend บน GitHub Pages เรียก API จาก Backend ได้
+2. ป้องกัน “Blocked by CORS policy” error
+3. เพิ่มความปลอดภัย — อนุญาตเฉพาะโดเมนที่กำหนดไว้เท่านั้น
 
 ## ส่วนที่ 16: แหล่งข้อมูลเพิ่มเติม
 
@@ -1430,8 +1484,8 @@ todo-frontend/
 
 ## สรุป
 **URL ของนักศึกษาคือ**:
-- Frontend: `https://your-username.github.io/todo-frontend/`
-- Backend: `https://your-backend.onrender.com`
+- Frontend: `https://wasurat07.github.io/todo-frontend/`
+- Backend: `https://flask-todo-app-jipt.onrender.com`
 
 ---
 
